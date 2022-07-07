@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import productsService from '../services/products.service';
+import productsService from '../services/products.services';
 
 const getAll = async (_req: Request, res: Response): Promise<Response> => {
   const users = await productsService.getAll();
