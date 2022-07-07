@@ -1,6 +1,15 @@
-import IUser from '../interfaces/user.interface';
+import IProduct from '../interfaces/products.interface';
 import productsModel from '../models/products.model';
 
-const getAll = (): Promise<IUser[]> => productsModel.getAll();
+const getAll = (): Promise<IProduct[]> => productsModel.getAll();
 
-export default { getAll };
+const create = async (product: IProduct): Promise<IProduct> => {
+  const { insertId } = await productsModel.create(product);
+  const newProducts = {
+    id: insertId,
+    ...product,
+  };
+  return newProducts;
+};
+
+export default { getAll, create };

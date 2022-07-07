@@ -6,4 +6,9 @@ const getAll = async (_req: Request, res: Response): Promise<Response> => {
   return res.status(200).send(users);
 };
 
-export default { getAll };
+const create = async (req: Request, res: Response):Promise<Response> => {
+  const product = await productsService.create(req.body);
+  return res.status(201).send(product);
+};
+
+export default { getAll, create };
