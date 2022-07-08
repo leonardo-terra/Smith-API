@@ -3,7 +3,7 @@ import connection from './connection';
 
 const getAll = async (): Promise<IOrderFromBD[]> => {
   const [orders] = await connection.execute(`
-    SELECT Orders.id, Orders.userId, Products.orderId as productsIds FROM Trybesmith.Products
+    SELECT Orders.id, Orders.userId, Products.id as productsIds FROM Trybesmith.Products
     INNER JOIN Trybesmith.Orders
     ON Trybesmith.Products.orderId = Trybesmith.Orders.id
 ;
